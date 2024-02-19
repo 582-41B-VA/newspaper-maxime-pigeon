@@ -1,0 +1,9 @@
+<h1>{{ title }}</h1>
+<p>{{ author }}</p>
+<p>{{ text }}</p>
+<h2>Related articles</h2>
+<ul>
+	{% for article in related_articles %}
+		<li>{{ article.title }}</li>
+	{% endfor %}
+</ul>

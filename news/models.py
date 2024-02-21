@@ -19,3 +19,10 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    name = models.CharField(max_length=200)
+    age = models.IntegerField()
+    comment_text = models.TextField()
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)

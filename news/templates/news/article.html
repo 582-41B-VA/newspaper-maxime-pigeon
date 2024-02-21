@@ -4,6 +4,40 @@
 <h2>Related articles</h2>
 <ul>
 	{% for article in related_articles %}
-		<li>{{ article.title }}</li>
+	<li>{{ article.title }}</li>
+	{% endfor %}
+</ul>
+<h2>Comments</h2>
+<form action="{% url 'comment' id %}" method="POST">
+	{% csrf_token %}
+	<fieldset>
+		<legend>Add a comment</legend>
+		<label
+			>Name
+			<input type="text" name="name" required />
+		</label>
+		<label
+			>Age
+			<input type="number" name="age" required />
+		</label>
+		<label
+			>Comment
+			<textarea name="comment_text" required></textarea>
+		</label>
+		<button>Submit</button>
+	</fieldset>
+</form>
+<ul>
+	{% for comment in comments %}
+	<li>
+		<dl>
+			<dt>Name</dt>
+			<dd>{{comment.name}}</dd>
+			<dt>Age</dt>
+			<dd>{{comment.age}}</dd>
+			<dt>Comment</dt>
+			<dd>{{comment.comment_text}}</dd>
+		</dl>
+	</li>
 	{% endfor %}
 </ul>
